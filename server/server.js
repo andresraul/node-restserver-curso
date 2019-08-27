@@ -26,8 +26,7 @@ app.use(require('./routes/usuario'));
     console.log('Base de datos ONLINE');
 
 }); */
-//process.env.URLDB = 'mongodb://localhost:27017/cafe';
-//process.env.URLDB = 'mongodb+srv://andresrmateo:hGL4DwdoRiVeL9Se@cluster0-ztx6e.mongodb.net/cafe';
+
 
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false }, (err, res) => {
     if (err) throw err;
