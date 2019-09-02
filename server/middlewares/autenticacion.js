@@ -20,8 +20,6 @@ let verificarToken = (req, res, next) => {
 
         req.usuario = decoded.usuario;
 
-        console.log('verificacion de token');
-
         next();
     });
 
@@ -35,7 +33,6 @@ let verificarToken = (req, res, next) => {
 
 let verificaAdmin_Role = (req, res, next) => {
     let admin = req.usuario.role;
-    console.log(admin);
 
     if (admin !== 'ADMIN_ROLE') {
         return res.status(400).json({

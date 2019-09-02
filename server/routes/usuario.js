@@ -71,7 +71,7 @@ app.put('/usuario/:id', [verificarToken, verificaAdmin_Role], (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
 
-    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
+    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, usuarioDB) => {
 
         if (err) {
             return res.json({
@@ -97,6 +97,7 @@ app.delete('/usuario/:id', [verificarToken, verificaAdmin_Role], (req, res) => {
 
 
     Usuario.findByIdAndUpdate(id, cambiaEstado, { new: true }, (err, usuarioDB) => {
+
         if (err) {
             return res.status(400).json({
                 ok: false,
